@@ -2,6 +2,7 @@ var nav = document.querySelector("nav");
 var li = document.querySelectorAll("ul a li")
 var main = document.querySelector('main');
 var abre = document.querySelector(".abre");
+var voltar = document.querySelector(".voltar");
 var i = 0;
 var menu = 0;
 function fixed(){
@@ -23,6 +24,18 @@ function fixed(){
     }
     else{
         nav.classList.remove("fixo");
+    }
+    if(scrollPos > (innerHeight / 2)){
+        if(!voltar.classList.contains("mostra")){
+            voltar.classList.add("mostra");
+            console.log("addMostra");
+        }
+    }
+    else{
+        if(voltar.classList.contains("mostra")){
+            voltar.classList.remove("mostra");
+            console.log("remMostra");
+        }
     }
 }
 window.addEventListener('scroll', fixed);
@@ -48,10 +61,4 @@ for(var j = 0; j < li.length; j++){
         abre.setAttribute("src","img/menu.svg");
         menu = 0;
     }
-}
-
-var elem = ["puf", "pof", "pit"];
-delete elem[1];
-for(var j = 0; j < elem.length; j++){
-    console.log(elem[j]);
 }
